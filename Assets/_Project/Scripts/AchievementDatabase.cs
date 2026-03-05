@@ -1,16 +1,15 @@
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
-public class AchievementDatabase : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
+using Malee;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+[CreateAssetMenu()]
+public class AchievementDatabase : ScriptableObject
+{
+    [Reorderable(sortable = false, paginate = false)]
+    public AchievementsArray achievements;
+
+    [System.Serializable]
+    public class AchievementsArray : ReorderableArray<Achievement> { }
 }
