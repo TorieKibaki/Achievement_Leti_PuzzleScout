@@ -1,7 +1,4 @@
-public enum AchievementID
-{
-    FinalOne,
-    HelloWorld,
-    GoodBye,
-    NewOne,
+public enum AchievementID {
+	GoodBye,
+	New,
 }

@@ -1,15 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-using Malee;
-
-[CreateAssetMenu()]
+// This line allows you to right-click in Project view to create the file
+[CreateAssetMenu(fileName = "AchievementDatabase", menuName = "Achievements/Database")]
 public class AchievementDatabase : ScriptableObject
 {
-    [Reorderable(sortable = false, paginate = false)]
-    public AchievementsArray achievements;
-
-    [System.Serializable]
-    public class AchievementsArray : ReorderableArray<Achievement> { }
+    public List<Achievement> achievements;
 }

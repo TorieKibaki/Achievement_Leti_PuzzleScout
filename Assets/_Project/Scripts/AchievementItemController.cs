@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class AchievementItemController : MonoBehaviour
 {
@@ -10,8 +11,8 @@ public class AchievementItemController : MonoBehaviour
     [SerializeField] Image unlockedIcon;
     [SerializeField] Image lockedIcon;
 
-    [SerializeField] Text titleLabel;
-    [SerializeField] Text descriptionLabel;
+    [SerializeField] TextMeshProUGUI titleLabel;
+    [SerializeField] TextMeshProUGUI descriptionLabel;
 
     public bool unlocked;
     public Achievement achievement;

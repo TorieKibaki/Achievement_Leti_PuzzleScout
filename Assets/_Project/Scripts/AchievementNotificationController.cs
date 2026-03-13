@@ -22,5 +22,9 @@ public class AchievementNotificationController : MonoBehaviour
     {
         achievementTitleLabel.text = achievement.title;
         m_animator.SetTrigger("Appear");
+
+        Debug.Log("Showing Notification for: " + achievement.title); // This will show in Console
+        achievementTitleLabel.text = achievement.title;
+        m_animator.SetTrigger("Appear");
     }
 }
