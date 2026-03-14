@@ -12,4 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 261592c49b9816e45be2b2a1b9d1ba4d, type: 3}
   m_Name: AchievementDatabase
   m_EditorClassIdentifier: Assembly-CSharp::AchievementDatabase
-  achievements: []
+  achievements:
+  - id: RobProMax
+    title: my
+    description: Goodness
+  - id: GoodBye
+    title: Hello
+    description: Just a Hello
+  - id: New
+    title: Yup
+    description: New One
