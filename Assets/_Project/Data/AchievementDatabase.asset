@@ -13,12 +13,15 @@ MonoBehaviour:
   m_Name: AchievementDatabase
   m_EditorClassIdentifier: Assembly-CSharp::AchievementDatabase
   achievements:
-  - id: RobProMax
-    title: my
-    description: Goodness
-  - id: GoodBye
-    title: Hello
-    description: Just a Hello
-  - id: New
-    title: Yup
-    description: New One
+  - id: Marathon
+    title: Marathon
+    description: First Quest
+  - id: JumpQuest
+    title: JumpQuest
+    description: Second Quest
+  - id: DragonQuest
+    title: DragonQuest
+    description: Third Quest
+  - id: Race
+    title: Race
+    description: Fourth Quest

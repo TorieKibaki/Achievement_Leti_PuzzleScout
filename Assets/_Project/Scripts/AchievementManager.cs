@@ -1,118 +1,83 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class AchievementManager : MonoBehaviour
 {
     public AchievementDatabase database;
-    public AchievementNotificationController achievementNotificationController;
-    public AchievementDropdownController achievementDropdownController;
+    public AchievementNotificationController notificationController;
+    public AchievementDropdownController dropdownController;
+
     public GameObject achievementItemPrefab;
     public Transform scrollViewContent;
+
     public AchievementID achievementToShow;
 
-    [SerializeField]
-    [HideInInspector]
-    private List<AchievementItemController> achievementItems = new List<AchievementItemController>();
+    [SerializeField, HideInInspector]
+    private List<AchievementItemController> achievementItems = new();
 
     private void Start()
     {
-        if (achievementDropdownController != null)
-            achievementDropdownController.onValueChanged += HandleAchievementDropdownValueChanged;
-
+        dropdownController.OnValueChanged += (id) => achievementToShow = id;
         LoadAchievementsTable();
     }
 
     public void ShowNotification()
     {
-        // 1. Safety check: Is the database assigned in the Inspector?
-        if (database == null)
-        {
-            Debug.LogError("Achievement Manager: Please drag your Database asset into the Inspector slot!");
-            return;
-        }
-
-        Debug.Log("Triggering Animator...");
-
-        // 2. Get the achievement safely
-        int index = (int)achievementToShow;
-        if (index >= 0 && index < database.achievements.Count)
-        {
-            Achievement achievement = database.achievements[index];
-
-            // 3. Check if the controller exists
-            if (achievementNotificationController != null)
-            {
-                achievementNotificationController.ShowNotification(achievement);
-            }
-        }
+        var achievement = database.achievements[(int)achievementToShow];
+        notificationController.ShowNotification(achievement);
     }
 
-    private void HandleAchievementDropdownValueChanged(AchievementID achievement)
-    {
-        achievementToShow = achievement;
-    }
-
-    [ContextMenu("LoadAchievementsTable()")]
+    [ContextMenu("Load Achievements Table")]
     private void LoadAchievementsTable()
     {
-        // Safety Check for Line 55
-        if (database == null || database.achievements == null || achievementItemPrefab == null) return;
-
-        if (achievementItems == null) achievementItems = new List<AchievementItemController>();
-
-        // Clean up old items
-        for (int i = achievementItems.Count - 1; i >= 0; i--)
+        // Clean up existing items
+        foreach (var item in achievementItems)
         {
-            if (achievementItems[i] != null)
-                DestroyImmediate(achievementItems[i].gameObject);
+            if (item != null) DestroyImmediate(item.gameObject);
         }
         achievementItems.Clear();
 
-        // Create new items
-        foreach (Achievement achievement in database.achievements)
+        // Populate from database
+        foreach (var achievement in database.achievements)
         {
-            GameObject obj = Instantiate(achievementItemPrefab, scrollViewContent);
-            AchievementItemController item = obj.GetComponent<AchievementItemController>();
+            var obj = Instantiate(achievementItemPrefab, scrollViewContent);
+            var item = obj.GetComponent<AchievementItemController>();
 
-            if (item != null)
-            {
-                bool unlocked = PlayerPrefs.GetInt(achievement.id, 0) == 1;
-                item.unlocked = unlocked;
-                item.achievement = achievement;
-                item.RefreshView();
-                achievementItems.Add(item);
-            }
+            item.achievement = achievement;
+            item.unlocked = PlayerPrefs.GetInt(achievement.id, 0) == 1;
+            item.RefreshView();
+
+            achievementItems.Add(item);
         }
     }
 
     public void UnlockAchievement() => UnlockAchievement(achievementToShow);
 
-    public void UnlockAchievement(AchievementID achievement)
+    public void UnlockAchievement(AchievementID achievementID)
     {
-        int index = (int)achievement;
-        if (achievementItems == null || index >= achievementItems.Count) return;
+        int index = (int)achievementID;
+        if (index < 0 || index >= achievementItems.Count) return;
 
-        AchievementItemController item = achievementItems[index];
-        if (item == null || item.unlocked) return;
+        var item = achievementItems[index];
+        if (item.unlocked) return;
 
         ShowNotification();
         PlayerPrefs.SetInt(item.achievement.id, 1);
+        PlayerPrefs.Save(); // Explicit save for safety
+
         item.unlocked = true;
         item.RefreshView();
     }
 
     public void LockAllAchievements()
     {
-        foreach (Achievement achievement in database.achievements)
-        {
+        foreach (var achievement in database.achievements)
             PlayerPrefs.DeleteKey(achievement.id);
-        }
-        foreach (AchievementItemController item in achievementItems)
+
+        foreach (var item in achievementItems)
         {
             item.unlocked = false;
             item.RefreshView();
         }
     }
-
 }

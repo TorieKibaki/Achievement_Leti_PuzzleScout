@@ -405,7 +405,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -18, y: 0}
+  m_SizeDelta: {x: -17, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &340153092
 MonoBehaviour:
@@ -1228,7 +1228,7 @@ RectTransform:
   m_Father: {fileID: 1733563810}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 0.2}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -3603,7 +3603,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 602453201}
   m_Direction: 2
   m_Value: 0
-  m_Size: 0.2
+  m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -3847,7 +3847,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Option A
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3856,7 +3856,7 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
+    rgba: 4281479730
   m_fontColor: {r: 0.19607843, g: 0.19607843, b: 0.19607843, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
@@ -3869,7 +3869,7 @@ MonoBehaviour:
   m_spriteAsset: {fileID: 0}
   m_tintAllSprites: 0
   m_StyleSheet: {fileID: 0}
-  m_TextStyleHashCode: 0
+  m_TextStyleHashCode: -1183493901
   m_overrideHtmlColors: 0
   m_faceColor:
     serializedVersion: 2
@@ -4478,6 +4478,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1987928535}
   - component: {fileID: 1987928534}
+  - component: {fileID: 1987928536}
   m_Layer: 0
   m_Name: '[Managers]'
   m_TagString: Untagged
@@ -4499,10 +4500,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AchievementManager
   database: {fileID: 11400000, guid: 31bed290cee94df45ae62fce3c133ec6, type: 2}
   achievementNotificationController: {fileID: 597428329}
-  achievementDropdownController: {fileID: 2059060247}
+  achievementDropdownController: {fileID: 0}
   achievementItemPrefab: {fileID: 8852731882433363707, guid: ab55de69cde0b4f40b4da57735c6e0b6, type: 3}
   scrollViewContent: {fileID: 715383567}
-  achievementToShow: 0
+  achievementToShowIndex: 0
   achievementItems:
   - {fileID: 890449092}
   - {fileID: 184958357}
@@ -4521,6 +4522,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1987928536
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1987928533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60b9cb23d15faa74bb0d906625e17e22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Tester
+  achievementManager: {fileID: 1987928534}
+  achievementIndexToUnlock: 0
 --- !u!1 &2057664706
 GameObject:
   m_ObjectHideFlags: 0
@@ -4668,8 +4683,8 @@ GameObject:
   - component: {fileID: 2059060246}
   - component: {fileID: 2059060250}
   - component: {fileID: 2059060249}
-  - component: {fileID: 2059060247}
   - component: {fileID: 2059060251}
+  - component: {fileID: 2059060252}
   m_Layer: 5
   m_Name: Dropdown
   m_TagString: Untagged
@@ -4699,18 +4714,6 @@ RectTransform:
   m_AnchoredPosition: {x: -246, y: 81}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2059060247
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2059060245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e42a3f989cd8a44489ff03f81f0de05d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::AchievementDropdownController
 --- !u!114 &2059060249
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4804,6 +4807,19 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_AlphaFadeSpeed: 0.15
+--- !u!114 &2059060252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2059060245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e42a3f989cd8a44489ff03f81f0de05d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AchievementDropdownController
+  database: {fileID: 11400000, guid: 31bed290cee94df45ae62fce3c133ec6, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

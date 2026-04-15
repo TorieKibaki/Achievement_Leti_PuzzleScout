@@ -1,18 +1,12 @@
-
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class Tester : MonoBehaviour
 {
-
     public AchievementManager achievementManager;
-
 
     public void MilestoneReached()
     {
+        // Ensure AchievementID.GoodBye exists in your Enum
         achievementManager.UnlockAchievement(AchievementID.GoodBye);
     }
-
 }
