@@ -252,9 +252,9 @@ MonoBehaviour:
   descriptionLabel: {fileID: 711622012}
   unlocked: 0
   achievement:
-    id: New
-    title: Yup
-    description: New One
+    id: JumpQuest
+    title: JumpQuest
+    description: Second Quest
 --- !u!114 &184958358
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1327,7 +1327,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: New One
+  m_text: Second Quest
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1841,7 +1841,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Hello
+  m_text: Marathon
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2015,9 +2015,9 @@ MonoBehaviour:
   descriptionLabel: {fileID: 1823515028}
   unlocked: 0
   achievement:
-    id: GoodBye
-    title: Hello
-    description: Just a Hello
+    id: Marathon
+    title: Marathon
+    description: First Quest
 --- !u!114 &890449093
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2756,7 +2756,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Yup
+  m_text: JumpQuest
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4205,7 +4205,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Just a Hello
+  m_text: First Quest
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4499,11 +4499,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AchievementManager
   database: {fileID: 11400000, guid: 31bed290cee94df45ae62fce3c133ec6, type: 2}
-  achievementNotificationController: {fileID: 597428329}
-  achievementDropdownController: {fileID: 0}
+  notificationController: {fileID: 597428329}
+  dropdownController: {fileID: 2059060252}
   achievementItemPrefab: {fileID: 8852731882433363707, guid: ab55de69cde0b4f40b4da57735c6e0b6, type: 3}
   scrollViewContent: {fileID: 715383567}
-  achievementToShowIndex: 0
+  achievementToShow: 0
   achievementItems:
   - {fileID: 890449092}
   - {fileID: 184958357}
@@ -4535,7 +4535,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tester
   achievementManager: {fileID: 1987928534}
-  achievementIndexToUnlock: 0
 --- !u!1 &2057664706
 GameObject:
   m_ObjectHideFlags: 0
@@ -4819,7 +4818,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e42a3f989cd8a44489ff03f81f0de05d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AchievementDropdownController
-  database: {fileID: 11400000, guid: 31bed290cee94df45ae62fce3c133ec6, type: 2}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
